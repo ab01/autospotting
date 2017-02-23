@@ -869,8 +869,8 @@ func TestTerminate(t *testing.T) {
 				},
 				region: &region{
 					services: connections{
-						ec2: mock{
-							er: nil,
+						ec2: mockEC2{
+							tierr: nil,
 						},
 					},
 				},
@@ -886,8 +886,8 @@ func TestTerminate(t *testing.T) {
 				},
 				region: &region{
 					services: connections{
-						ec2: mock{
-							er: errors.New(""),
+						ec2: mockEC2{
+							tierr: errors.New(""),
 						},
 					},
 				},
@@ -903,6 +903,8 @@ func TestTerminate(t *testing.T) {
 	}
 }
 
+// Ideally should find a better way to test tagging
+// and avoid having a small wait of 1 timeout
 func TestTag(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -920,8 +922,8 @@ func TestTag(t *testing.T) {
 				region: &region{
 					name: "test",
 					services: connections{
-						ec2: mock{
-							er: nil,
+						ec2: mockEC2{
+							cterr: nil,
 						},
 					},
 				},
@@ -938,8 +940,8 @@ func TestTag(t *testing.T) {
 				region: &region{
 					name: "test",
 					services: connections{
-						ec2: mock{
-							er: errors.New(""),
+						ec2: mockEC2{
+							cterr: errors.New(""),
 						},
 					},
 				},
@@ -959,8 +961,8 @@ func TestTag(t *testing.T) {
 				region: &region{
 					name: "test",
 					services: connections{
-						ec2: mock{
-							er: nil,
+						ec2: mockEC2{
+							cterr: nil,
 						},
 					},
 				},
@@ -980,8 +982,8 @@ func TestTag(t *testing.T) {
 				region: &region{
 					name: "test",
 					services: connections{
-						ec2: mock{
-							er: errors.New(""),
+						ec2: mockEC2{
+							cterr: errors.New(""),
 						},
 					},
 				},
